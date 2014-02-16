@@ -1,0 +1,22 @@
+.PHONY: all clean test
+
+OCAMLDEP_MODULES_ENABLED = false
+
+OCAML_FLAGS = -w A -warn-error A
+
+USE_OCAMLFIND = true
+if $(not $(OCAMLFIND_EXISTS))
+   eprintln(This project requires ocamlfind, but is was not found.)
+   eprintln(You need to install ocamlfind and run "omake --configure".)
+   exit 1
+
+NATIVE_ENABLED = $(OCAMLOPT_EXISTS)
+BYTE_ENABLED = $(not $(OCAMLOPT_EXISTS))
+
+.DEFAULT: all
+.SUBDIRS: src test
+
+clean:
+	rm -f *~ *.opt *.cmi *.cmx *.cmo *.cma *.cmxa *.o *.omc
+
+Makefile:

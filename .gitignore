@@ -1,0 +1,8 @@
+.omakedb
+.omakedb.lock
+*.omc
+*.cm[aiox]
+*.cmxa
+*.[ao]
+*.run
+*.opt

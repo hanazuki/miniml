@@ -1,0 +1,17 @@
+OCAMLINCLUDES += ../src
+
+FILES = assertion $(removesuffix $(glob *.ml))
+
+OCAMLPACKS[] =
+	oUnit
+
+TESTER = runtests
+OCAML_LIBS += ../src/libMiniml
+
+all: $(OCamlProgram $(TESTER), $(FILES))
+
+clean:
+	rm -f *~ *.opt *.cmi *.cmx *.cmo *.cma *.cmxa *.o *.omc
+
+test : all
+	./$(TESTER)

@@ -1,0 +1,29 @@
+FILES[] =
+	utils
+	syntax
+	parser
+	lexer
+	env
+	semantic
+	typing
+	eval
+	prelude
+	interpret
+	main
+
+LIB = libMiniml
+PROGRAM = miniml
+
+GENERATED_FILES[] =
+	lexer.ml
+	parser.mli
+	parser.ml
+
+OCamlGeneratedFiles($(GENERATED_FILES))
+
+all: $(OCamlProgram $(PROGRAM), $(FILES))
+OCamlLibrary($(LIB), $(FILES))
+
+clean:
+	rm -f $(GENERATED_FILES)
+	rm -f *~ *.opt *.cmi *.cmx *.cmo *.cma *.cmxa *.o *.omc
